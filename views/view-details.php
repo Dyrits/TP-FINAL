@@ -1,6 +1,5 @@
 <?php
 $title = "Restaurants";
-ob_start();
 ?>
 <h1><?= $restaurant['nom'] ?></h1>
 <address><?= $restaurant['adresse']."<br>".$restaurant['cp']." ". $restaurant['ville']."<br>".$restaurant['telephone'] ?></address>
@@ -23,8 +22,4 @@ ob_start();
         </span>
     </p>
     <p><?= $avis_['commentaire'] ?></p>
-<?php
-endforeach;
-$content = ob_get_clean();
-require_once "./views/template.php";
-?>
+<?php endforeach; ?>

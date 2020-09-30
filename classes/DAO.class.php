@@ -7,8 +7,7 @@ class DAO {
     private static $SELECT_AVIS = "SELECT auteur, note, commentaire FROM avis WHERE idRestaurant = :id";
 
     static function getRestaurants() {
-        $PDO = Connection::getPDO();
-        return $PDO->query(self::$SELECT_ALL);
+        return self::executeQuery(self::$SELECT_ALL)->fetchAll();
     }
 
     static function getRestaurant($id) {
@@ -19,9 +18,8 @@ class DAO {
         return self::executeQuery(self::$SELECT_AVIS, [":id" => $id])->fetchAll();
     }
 
-    private static function executeQuery($SQL, $values) {
-        $PDO = Connection::getPDO();
-        $query = $PDO->prepare($SQL);
+    private static function executeQuery($SQL, $values = []) {
+        $query = Connection::getPDO()->prepare($SQL);
         foreach ($values as $identifier => $value) {
             $query->bindValue($identifier, $value);
         }
