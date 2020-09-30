@@ -1,10 +1,9 @@
 <?php
 try {
     require_once "./classes/DisplayManager.class.php";
-    $details = filter_input(INPUT_GET, 'details', FILTER_VALIDATE_BOOLEAN);
-    $details ? DisplayManager::displayDetails() : DisplayManager::displayRestaurants();
+    $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+    DisplayManager::displayPage($action);
 } catch (PDOException $exception) {
-    $error = "L'accès aux données a échoué (code: $exception->getCode())";
-    require_once "./views/view-error.php";
+    DisplayManager::displayError($exception);
 }
 
