@@ -1,5 +1,6 @@
+<script src="https://kit.fontawesome.com/7b3b0349cd.js" crossorigin="anonymous"></script>
 <?php
-$title = "Restaurants";
+$title = $restaurant['nom'];
 ?>
 <h1><?= $restaurant['nom'] ?></h1>
 <address><?= $restaurant['adresse']."<br>".$restaurant['cp']." ". $restaurant['ville']."<br>".$restaurant['telephone'] ?></address>

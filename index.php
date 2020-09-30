@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once "./managers/DisplayManager.class.php";
+    require_once "./classes/DisplayManager.class.php";
     $details = filter_input(INPUT_GET, 'details', FILTER_VALIDATE_BOOLEAN);
     $details ? DisplayManager::displayDetails() : DisplayManager::displayRestaurants();
 } catch (PDOException $exception) {
